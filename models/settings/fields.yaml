@@ -1,0 +1,13 @@
+fields:
+    intro:
+        type: section
+        label: Einstellungen für Easyrechtssicher
+        comment: Geben Sie hier Ihre Zugangsdaten für Easyrechtssicher ein
+    privacy:
+        label: URL - Datenschutzerklärungs
+        placeholder: https://erdse.net/KEY/de/URL.html
+        span: left
+    imprint:
+        label: URL - Impressum
+        placeholder: https://erimp.net/KEY/de/URL.html
+        span: right
