@@ -16,7 +16,7 @@ class Plugin extends PluginBase {
     {
         return [
             'name'        => 'EasyRechtssicher Plugin',
-            'description' => 'Ermöglicht das Einfügen von Impressum und Datenschutzerklärung',
+            'description' => 'kosmoskosmos.easyrechtssicher::lang.plugin.description',
             'author'      => 'KosmosKosmos',
             'icon'        => 'icon-balance-scale'
         ];
@@ -35,7 +35,7 @@ class Plugin extends PluginBase {
         return [
             'easyrechtssicher' => [
                 'label'         => 'Easy Rechtssicher',
-                'description'   => 'Einstellungen rund um Bezahlung',
+                'description'   => 'kosmoskosmos.easyrechtssicher::lang.settings.description',
                 'icon'          => 'icon-balance-scale',
                 'class'         => Settings::class
             ]
