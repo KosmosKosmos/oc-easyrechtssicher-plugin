@@ -63,7 +63,7 @@ class Imprint extends ComponentBase
                 $ret = File::get($dir.$file);
                 if ($ret) {
                     $doLiveUpdate = false;
-                    $ret .= PHP_EOL."<!-- gecachte Version " . $dir . $file . ' vom ' . date('d.m.Y H:i:s', $lastmodified) . ' -->';
+                    $ret .= "\n<!-- gecachte Version " . $dir . $file . ' vom ' . date('d.m.Y H:i:s', $lastmodified) . ' -->';
                 }
             }
             if ($doLiveUpdate) {
