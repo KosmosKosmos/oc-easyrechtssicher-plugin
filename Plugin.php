@@ -8,6 +8,10 @@ use KosmosKosmos\EasyRechtssicher\Models\Settings;
 
 class Plugin extends PluginBase {
 
+    public $require = [
+        'RainLab.Translate'
+    ];
+
     public function pluginDetails()
     {
         return [
