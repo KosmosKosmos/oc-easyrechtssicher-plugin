@@ -21,7 +21,8 @@
                     if (count($parts) == 7) {
                         // Sprache schon in URL
                         $url = str_replace(array('/de/', '/en/'), '/' . $lang . '/', $url);
-                    } else {
+                    }
+                    else {
                         $dom = array_pop($parts);
                         $url = implode('/', $parts) . '/' . $lang . '/' . $dom;
                     }
@@ -36,7 +37,8 @@
                     File::delete($dir.$file);
                     // Serveraufruf sicherstellen, selbst, wenn das Löschen fehl schlägt
                     $lastmodified = 0;
-                } else {
+                }
+                else {
                     $lastmodified = (file_exists($dir . $file) ? @filemtime($dir . $file) : 0); // 0 oder unixtimestamp
                 }
 
@@ -61,7 +63,8 @@
                             File::put($dir.$file, $ret);
                             Cache::put('OCER_NEEDS_RELOAD', true, 900);
                         }
-                    } catch (Exception $e) {
+                    }
+                    catch (Exception $e) {
                         // versuche doch gecachte Version Impressum, weil Serverfehler oder cachetime rum
                         $ret = File::get($dir.$file);
                         if (!$ret) {
@@ -71,7 +74,7 @@
                         }
                     }
                 }
-                Log::info($ret);
+
                 return $ret;
             }
 
