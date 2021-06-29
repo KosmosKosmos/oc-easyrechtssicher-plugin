@@ -1,5 +1,9 @@
 {
+    "name": "kosmoskosmos/easyrechtssicher-plugin",
+    "type": "october-plugin",
+    "description": "Easy Rechtssicher imprint and privacy policy plugin",
     "require": {
+        "composer/installers": "~1.0",
         "guzzlehttp/guzzle": "^7.3"
     }
 }
