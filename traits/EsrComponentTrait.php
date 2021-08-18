@@ -5,9 +5,9 @@
     use Illuminate\Support\Facades\Cache;
     use Illuminate\Support\Facades\File;
     use Illuminate\Support\Facades\Log;
+    use Illuminate\Support\Facades\URL;
     use Illuminate\Support\Str;
     use KosmosKosmos\EasyRechtssicher\Models\Settings;
-    use October\Rain\Support\Facades\Url;
     use RainLab\Translate\Classes\Translator;
 
     trait EsrComponentTrait {
@@ -29,7 +29,8 @@
                 }
                 // Cache Handling
                 $dir = sys_get_temp_dir();
-                $baseUrl = Str::after(Url::to('/'), '://');
+                $baseUrl = Str::after(URL::to('/'), '://');
+
                 $file = 'easy_'.trans('kosmoskosmos.easyrechtssicher::lang.mode.shortname.'.$mode).'_' . $lang . '_' . $baseUrl . '.html';
 
                 $requestData = request()->all();
