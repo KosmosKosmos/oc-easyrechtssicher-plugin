@@ -35,12 +35,12 @@
 
                 $requestData = request()->all();
                 if (array_key_exists('cache', $requestData) && $requestData['cache'] == 0) {
-                    File::delete($dir.$file);
+                    File::delete($dir.'/'.$file);
                     // Serveraufruf sicherstellen, selbst, wenn das Löschen fehl schlägt
                     $lastmodified = 0;
                 }
                 else {
-                    $lastmodified = (file_exists($dir . $file) ? @filemtime($dir . $file) : 0); // 0 oder unixtimestamp
+                    $lastmodified = (file_exists($dir.'/'.$file) ? @filemtime($dir.'/'.$file) : 0); // 0 oder unixtimestamp
                 }
 
                 $doLiveUpdate = true;
@@ -48,10 +48,10 @@
                 // lade aus Cache, wenn vorhanden und cache zeit noch nicht rum
                 if (Cache::has('OCER_NEEDS_RELOAD')) {
                     // lade gecachte DSE
-                    $ret = File::get($dir.$file);
+                    $ret = File::get($dir.'/'.$file);
                     if ($ret) {
                         $doLiveUpdate = false;
-                        $ret .= "\n<!-- gecachte Version " . $dir . $file . ' vom ' . date('d.m.Y H:i:s', $lastmodified) . ' -->';
+                        $ret .= "\n<!-- gecachte Version " . $dir.'/'.$file . ' vom ' . date('d.m.Y H:i:s', $lastmodified) . ' -->';
                     }
                 }
                 if ($doLiveUpdate) {
@@ -61,17 +61,17 @@
                         $ret = (string)$response->getBody();
                         // wenn kein Fehler dann cachen
                         if (!preg_match('/error.{1,4}#/i', $ret)) {
-                            File::put($dir.$file, $ret);
+                            File::put($dir.'/'.$file, $ret);
                             Cache::put('OCER_NEEDS_RELOAD', true, 900);
                         }
                     }
                     catch (Exception $e) {
                         // versuche doch gecachte Version Impressum, weil Serverfehler oder cachetime rum
-                        $ret = File::get($dir.$file);
+                        $ret = File::get($dir.'/'.$file);
                         if (!$ret) {
                             $ret = "Error DII#0 ".__('kosmoskosmos.easyrechtssicher::lang.mode.fullname.'.$mode)." fehlt";
                         } else {
-                            $ret .= "\n<!-- gecachte Version " . $dir . $file . ' vom ' . date('d.m.Y H:i:s', $lastmodified) . ' -->';
+                            $ret .= "\n<!-- gecachte Version " . $dir.'/'.$file . ' vom ' . date('d.m.Y H:i:s', $lastmodified) . ' -->';
                         }
                     }
                 }
