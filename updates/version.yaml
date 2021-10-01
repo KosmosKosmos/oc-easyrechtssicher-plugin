@@ -3,3 +3,4 @@
 1.0.2: Replce October Url facade with Illuminate URL facade
 1.0.3: Fix file path slash handling
 1.0.4: Foolproof file caching
+1.0.5: Different cache keys for Imrint and DSE
