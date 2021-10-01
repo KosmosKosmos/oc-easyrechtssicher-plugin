@@ -46,7 +46,7 @@
                 $doLiveUpdate = true;
                 $ret = '';
                 // lade aus Cache, wenn vorhanden und cache zeit noch nicht rum
-                if (Cache::has('OCER_NEEDS_RELOAD')) {
+                if (Cache::has('OCER_NEEDS_RELOAD_'.$mode)) {
                     // lade gecachte DSE
                     if (File::exists(temp_path($file))) {
                         $ret = File::get(temp_path($file));
@@ -65,7 +65,7 @@
                         // wenn kein Fehler dann cachen
                         if (!preg_match('/error.{1,4}#/i', $ret)) {
                             File::put(temp_path($file), $ret);
-                            Cache::put('OCER_NEEDS_RELOAD', true, 900);
+                            Cache::put('OCER_NEEDS_RELOAD_'.$mode, true, 900);
                         }
                     }
                     catch (Exception $e) {
