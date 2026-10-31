@@ -68,7 +68,7 @@
                             Cache::put('OCER_NEEDS_RELOAD_'.$mode, true, 900);
                         }
                     }
-                    catch (Exception $e) {
+                    catch (\Exception $e) {
                         // versuche doch gecachte Version Impressum, weil Serverfehler oder cachetime rum
                         if (File::exists(temp_path($file))) {
                             $ret = File::get(temp_path($file));
